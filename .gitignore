@@ -1,0 +1,27 @@
+# --- Python ---
+# Ignora el entorno virtual
+.venv/
+
+# Ignora carpetas de caché de Python (donde se guarda el código compilado)
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Interfaz Gráfica (Tkinter) ---
+# Si usas algún archivo temporal de log o crash
+*.log
+
+# --- Sistema Operativo ---
+# Archivos específicos de macOS
+.DS_Store
+
+# Archivos específicos de Windows
+Thumbs.db
+desktop.ini
+
+# --- IDEs / Editores ---
+# Si usas VS Code
+.vscode/
+# Si usas PyCharm
+.idea/
+
