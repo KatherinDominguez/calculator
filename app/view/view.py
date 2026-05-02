@@ -41,14 +41,18 @@ def create_buttons_operators():
     btn_substract.grid(row=2,column=3)
     btn_times.grid(row=3,column=3)
     btn_divide.grid(row=4,column=3)
-    btn_sum_sub.grid(row=4,column=2)
+    btn_sum_sub.grid(row=4,column=3)
     btn_equal.grid(row=3,column=4,rowspan=2)
 
+def create_buttton_decimal():
+    btn_decimal = tk.Button(root,text=".")
+    btn_decimal.grid(row=4,column=1)
 
 
 
 create_screen()
 create_buttons_number()
+create_buttton_decimal()
 create_buttons_operators()
 
 
