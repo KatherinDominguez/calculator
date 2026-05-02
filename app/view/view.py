@@ -39,10 +39,10 @@ def create_buttons_operators():
 
     btn_sum.grid(row=1,column=3)
     btn_substract.grid(row=2,column=3)
-    btn_times.grid(row=3,column=3)
-    btn_divide.grid(row=4,column=3)
-    btn_sum_sub.grid(row=4,column=3)
-    btn_equal.grid(row=3,column=4,rowspan=2)
+    btn_times.grid(row=1,column=4)
+    btn_divide.grid(row=2,column=4)
+    btn_sum_sub.grid(row=4,column=2)
+    btn_equal.grid(row=3,column=3,rowspan=2,columnspan=2)
 
 def create_buttton_decimal():
     btn_decimal = tk.Button(root,text=".")
