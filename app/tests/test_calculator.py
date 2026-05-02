@@ -35,3 +35,11 @@ class TestCalculadora(unittest.TestCase):
         self.assertAlmostEqual(suma(1.1, 2.2), 3.3, places=1)
         self.assertAlmostEqual(division(1, 3), 0.333, places=3)
         self.assertEqual(multiplicacion(0.5, 4), 2.0)
+
+     def test_casos_extremos(self):
+        self.assertEqual(suma(999999, 1), 1000000)
+        self.assertEqual(multiplicacion(0, 999999), 0)
+        self.assertEqual(division(0, 5), 0)
+        self.assertAlmostEqual(division(1, 7), 0.142857, places=5)
+if __name__ == "__main__":
+    unittest.main()
