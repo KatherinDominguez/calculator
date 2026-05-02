@@ -15,3 +15,8 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(multiplicacion(3, 4), 12)
         self.assertEqual(multiplicacion(0, 99), 0)
         self.assertEqual(multiplicacion(-2, 5), -10)
+    
+    def test_division(self):
+        self.assertEqual(division(10, 2), 5)
+        self.assertEqual(division(9, 3), 3)
+        self.assertEqual(division(7, 2), 3.5)
