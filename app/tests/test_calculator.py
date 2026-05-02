@@ -24,3 +24,9 @@ class TestCalculadora(unittest.TestCase):
     def test_division_por_cero(self):
         with self.assertRaises(ValueError):
             division(10, 0)
+
+    def test_negativos(self):
+        self.assertEqual(suma(-3, -7), -10)
+        self.assertEqual(resta(-5, -2), -3)
+        self.assertEqual(multiplicacion(-4, -4), 16)
+        self.assertEqual(division(-9, 3), -3)
