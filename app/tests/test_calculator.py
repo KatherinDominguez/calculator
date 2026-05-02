@@ -20,3 +20,7 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(division(10, 2), 5)
         self.assertEqual(division(9, 3), 3)
         self.assertEqual(division(7, 2), 3.5)
+
+    def test_division_por_cero(self):
+        with self.assertRaises(ValueError):
+            division(10, 0)
