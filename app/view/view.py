@@ -53,7 +53,4 @@ class View:
         self.create_buttton_decimal()
         self.create_buttons_operators()
 
-
         self.root.mainloop()
-view = View()
-view.start()
