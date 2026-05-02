@@ -1,6 +1,8 @@
 import unittest
 from model import suma, resta, multiplicacion, division
+
 class TestCalculadora(unittest.TestCase):
+    
     def test_suma(self):
         self.assertEqual(suma(2, 3), 5)
         self.assertEqual(suma(0, 0), 0)
@@ -36,7 +38,7 @@ class TestCalculadora(unittest.TestCase):
         self.assertAlmostEqual(division(1, 3), 0.333, places=3)
         self.assertEqual(multiplicacion(0.5, 4), 2.0)
 
-     def test_casos_extremos(self):
+    def test_casos_extremos(self):
         self.assertEqual(suma(999999, 1), 1000000)
         self.assertEqual(multiplicacion(0, 999999), 0)
         self.assertEqual(division(0, 5), 0)
