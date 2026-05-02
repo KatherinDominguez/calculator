@@ -30,3 +30,8 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(resta(-5, -2), -3)
         self.assertEqual(multiplicacion(-4, -4), 16)
         self.assertEqual(division(-9, 3), -3)
+
+    def test_decimales(self):
+        self.assertAlmostEqual(suma(1.1, 2.2), 3.3, places=1)
+        self.assertAlmostEqual(division(1, 3), 0.333, places=3)
+        self.assertEqual(multiplicacion(0.5, 4), 2.0)
