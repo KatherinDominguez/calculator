@@ -5,6 +5,10 @@ root = tk.Tk()
 
 value_screen = tk.StringVar(value="")
 
+
+def set_screen_value(value):
+    value_screen.set(value)
+
 def update_screen_value(value):
     if value_screen.get() == "0" and value == 0:
         return
@@ -31,17 +35,22 @@ def create_buttons_operators():
     btn_times = tk.Button(root,text="*")
     btn_divide = tk.Button(root,text="/")
     btn_equal = tk.Button(root,text="=")
+    btn_sum_sub = tk.Button(root,text="+/-")
 
     btn_sum.grid(row=1,column=3)
     btn_substract.grid(row=2,column=3)
     btn_times.grid(row=3,column=3)
     btn_divide.grid(row=4,column=3)
+    btn_sum_sub.grid(row=4,column=2)
     btn_equal.grid(row=3,column=4,rowspan=2)
+
+
 
 
 create_screen()
 create_buttons_number()
 create_buttons_operators()
+
 
 root.mainloop()
 
