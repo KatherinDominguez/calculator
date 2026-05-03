@@ -1,60 +1,68 @@
-from model import suma, resta, multiplicacion, division
+from model.calculator import suma, resta, multiplicacion, division
 
+class Controller:
+    def __init__(self, view):
+        self.view = view
+        self.current_value = "0"
+        self.previous_value = None
+        self.operator = None
+        self.reset_screen = False
+        self.view.set_screen_value(self.current_value)
 
-def validar_numeros(a, b):
-    """
-    Valida que ambos valores sean números.
+    def process_input(self, value):
+        value_str = str(value)
 
-    Args:
-        a (int | float): Primer valor.
-        b (int | float): Segundo valor.
+        if value_str in "0123456789.":
+            if self.reset_screen:
+                self.current_value = value_str
+                self.reset_screen = False
+            else:
+                if self.current_value == "0" and value_str != ".":
+                    self.current_value = value_str
+                else:
+                    self.current_value += value_str
+            self.view.set_screen_value(self.current_value)
 
-    Raises:
-        ValueError: Si alguno de los valores no es numérico.
-    """
-    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-        raise ValueError("Ambos valores deben ser números")
+        elif value_str in ["+", "-", "*", "/"]:
+            if self.operator and not self.reset_screen:
+                self.calculate()
+            self.previous_value = self.current_value
+            self.operator = value_str
+            self.reset_screen = True
 
+        elif value_str == "=":
+            if self.operator:
+                self.calculate()
+                self.operator = None
+                self.reset_screen = True
+        
+        elif value_str == "+/-":
+            if self.current_value != "0" and self.current_value != "Error":
+                if self.current_value.startswith("-"):
+                    self.current_value = self.current_value[1:]
+                else:
+                    self.current_value = "-" + self.current_value
+                self.view.set_screen_value(self.current_value)
 
-def sumar_controller(a, b):
-    """
-    Controlador para sumar dos números.
-    """
-    try:
-        validar_numeros(a, b)
-        return suma(a, b)
-    except Exception as e:
-        return f"Error en la suma: {str(e)}"
-
-
-def restar_controller(a, b):
-    """
-    Controlador para restar dos números.
-    """
-    try:
-        validar_numeros(a, b)
-        return resta(a, b)
-    except Exception as e:
-        return f"Error en la resta: {str(e)}"
-
-
-def multiplicar_controller(a, b):
-    """
-    Controlador para multiplicar dos números.
-    """
-    try:
-        validar_numeros(a, b)
-        return multiplicacion(a, b)
-    except Exception as e:
-        return f"Error en la multiplicación: {str(e)}"
-
-
-def dividir_controller(a, b):
-    """
-    Controlador para dividir dos números.
-    """
-    try:
-        validar_numeros(a, b)
-        return division(a, b)
-    except Exception as e:
-        return f"Error en la división: {str(e)}"
+    def calculate(self):
+        try:
+            a = float(self.previous_value)
+            b = float(self.current_value)
+            
+            if self.operator == "+":
+                res = suma(a, b)
+            elif self.operator == "-":
+                res = resta(a, b)
+            elif self.operator == "*":
+                res = multiplicacion(a, b)
+            elif self.operator == "/":
+                res = division(a, b)
+                
+            if isinstance(res, float) and res.is_integer():
+                res = int(res)
+                
+            self.current_value = str(res)
+            self.view.set_screen_value(self.current_value)
+        except Exception:
+            self.current_value = "Error"
+            self.view.set_screen_value(self.current_value)
