@@ -73,8 +73,16 @@ Consulta [`tests/README.md`](tests/README.md) para más detalles.
 - Python 3
 - Módulo estándar `unittest`
 
+##  Grupo
+
+The coders
+
 ##  Participantes 
+
 1 Ian Hans Escobar Urey 
+
 2 Maribel Choque Medrano
+
 3 Katherin Izel Dominguez Mamani
+
 4 Eleonor Camile Anturiano Eulate
